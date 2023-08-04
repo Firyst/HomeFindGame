@@ -1,0 +1,2 @@
+doorframe: 14*24 (7*12)
+celling height: 14
