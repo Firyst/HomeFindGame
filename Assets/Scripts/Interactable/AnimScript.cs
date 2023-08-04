@@ -15,7 +15,9 @@ public class AnimScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        anim[animName].time = 0f;
+        anim[animName].speed = 0f;
+        anim.Play();
     }
 
     // Update is called once per frame
