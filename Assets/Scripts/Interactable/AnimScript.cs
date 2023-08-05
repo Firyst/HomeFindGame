@@ -28,7 +28,7 @@ public class AnimScript : MonoBehaviour
 
     public void SwitchState()
     {
-        if (state)
+        if (anim[animName].speed <= 0)
         {
             // anim["SinkAnim"].time = 0f;
             anim[animName].speed = 1f*speed;
