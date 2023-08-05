@@ -22,18 +22,11 @@ public class SwitchScript : MonoBehaviour
             light.enabled = false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SwitchState()
     {
         foreach (Light light in lights)
         {
-            light.enabled = state;
+            light.enabled = !light.enabled;
         }
 
         if (state)
