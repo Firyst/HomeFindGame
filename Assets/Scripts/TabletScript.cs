@@ -4,6 +4,9 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
+
 
 public class TabletScript : MonoBehaviour
 
@@ -20,6 +23,7 @@ public class TabletScript : MonoBehaviour
     [SerializeField] private Animation endingAnim2;
 
     [SerializeField] private GraphicRaycaster touchBlock;
+    [SerializeField] private CompTry tablet;
 
 
 
@@ -50,7 +54,7 @@ public class TabletScript : MonoBehaviour
 
         for (int key_i = 1; key_i < lines.Length; key_i++)
         {
-            // чтение файла локализации
+            // чтение файла 
             string[] locale_line = lines[key_i].Split(";");
             if (locale_line.Length > 2)
             {
@@ -98,6 +102,9 @@ public class TabletScript : MonoBehaviour
 
         endingAnim1.Play();
         endingAnim2.Play();
+
+        PlayerPrefs.SetInt("FIRSTTIMEOPENING", 1);
+        StartLevelDelayed(7500, "Podval");
     }
 
     public void EndDecline()
@@ -106,5 +113,13 @@ public class TabletScript : MonoBehaviour
         blackScreenAnimation["black_screen"].speed = -1f;
         blackScreenAnimation["black_screen"].time = 2f;
         blackScreenAnimation.Play();
+        StartLevelDelayed(2500, "Podval");
+    }
+
+    async public void StartLevelDelayed(int delay, string scene)
+    {
+        await Task.Delay(delay);
+        tablet.ChangeState();
+        SceneManager.LoadScene(scene);
     }
 }
