@@ -96,6 +96,7 @@ public class TabletScript : MonoBehaviour
     public void EndBuy()
     {
         touchBlock.enabled = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         blackScreenAnimation["black_screen"].speed = -1f;
         blackScreenAnimation["black_screen"].time = 2f;
         blackScreenAnimation.Play();
@@ -104,12 +105,31 @@ public class TabletScript : MonoBehaviour
         endingAnim2.Play();
 
         PlayerPrefs.SetInt("FIRSTTIMEOPENING", 1);
-        StartLevelDelayed(7500, "Podval");
+        StartLevelDelayed(15000, "MainMenu");
+        EndBuy2();
+    }
+
+    async private void EndBuy2()
+    {
+        await Task.Delay(10000);
+        print("reverse");
+
+
+        endingAnim2["ending2"].time = endingAnim2["ending2"].length;
+        endingAnim2["ending2"].speed = -1f;
+
+        await Task.Delay(1000);
+        endingAnim1["ending1"].time = endingAnim1["ending1"].length;
+        endingAnim1["ending1"].speed = -1f;
+
+        endingAnim1.Play();
+        endingAnim2.Play();
     }
 
     public void EndDecline()
     {
         touchBlock.enabled = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         blackScreenAnimation["black_screen"].speed = -1f;
         blackScreenAnimation["black_screen"].time = 2f;
         blackScreenAnimation.Play();
