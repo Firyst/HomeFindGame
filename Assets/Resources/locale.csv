@@ -1,0 +1,10 @@
+Key;en;ru;none
+menu.title;Title;Название;
+menu.play;Play;Играть;
+menu.levels;Levels;Уровни;
+ui.complete;Level completed;Уровень пройден;
+ui.level;Level;Уровень;
+ui.buy;Purchase;Купить;
+ui.deny;Decline;Отказаться;
+ui.review;Review;Осмотреть;
+ui.ending;Bad ending;Плохая концовка;

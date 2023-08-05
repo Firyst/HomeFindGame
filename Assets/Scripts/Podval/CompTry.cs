@@ -9,6 +9,11 @@ public class CompTry : MonoBehaviour
     [SerializeField] private StarterAssets.StarterAssetsInputs w;
     private string NextLevel = "";
 
+    private void Start()
+    {
+        CompCanvas.SetActive(false);
+    }
+
     public void ChangeState()
     {
         CompCanvas.SetActive(!CompCanvas.activeSelf);
