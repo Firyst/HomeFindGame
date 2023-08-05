@@ -9,6 +9,7 @@ public class SaleItemScript : MonoBehaviour
     public NKLPLocalizer localizer;
     public Dictionary<string, Dictionary<string, string>>  parsedData;
     public Translator targetScript;
+    public MySoundHandler player;
 
     [SerializeField] private Text titleText;
     [SerializeField] private Text descText;
@@ -27,6 +28,7 @@ public class SaleItemScript : MonoBehaviour
 
     private void SendSignal()
     {
+        player.MyPlaySound();
         targetScript.UpdateTarget("level0");
     }
 

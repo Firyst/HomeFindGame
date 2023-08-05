@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
@@ -11,17 +12,25 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private Animation fadeAnim;
+    [SerializeField] private Slider volumeSlider;
 
     void Start()
     {
         settingsCanvas.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
+        volumeSlider.onValueChanged.AddListener(changeVolume);
+        volumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("volume", 0.4f));
     }
 
     public void SwitchState()
     {
         settingsCanvas.enabled = !settingsCanvas.enabled;
         mainCanvas.enabled = !mainCanvas.enabled;
+    }
+
+    private void changeVolume(float newVol)
+    {
+        PlayerPrefs.SetFloat("volume", newVol);
     }
 
     public void StartGame()
