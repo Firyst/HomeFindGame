@@ -179,4 +179,15 @@ public class NKLPLocalizer : MonoBehaviour
         }
     }
 
+    public void SwitchLanguages()
+    {
+        if (lang == "ru")
+        {
+            ChangeLang("en");
+        } else
+        {
+            ChangeLang("ru");
+        }
+    }
+
 }

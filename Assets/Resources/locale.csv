@@ -1,7 +1,12 @@
 Key;en;ru;none
 menu.title;Title;Название;
 menu.play;Play;Играть;
-menu.levels;Levels;Уровни;
+menu.options;Settings;Настройки;
+menu.quit;Quit;Выйти;
+menu.lang;Поменять язык;Change language;
+menu.langS;Language;Язык;
+menu.sounds;Sound level;Уровень звука;
+menu.back;Back;Назад;
 ui.complete;Level completed;Уровень пройден;
 ui.level;Level;Уровень;
 ui.buy;Purchase;Купить;
