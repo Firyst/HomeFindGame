@@ -67,7 +67,7 @@ public class AnimScript : MonoBehaviour
                 {
                     soundOff.PlayDelayed(soundOffDelay);
                 }
-            } else if (anim[animName].time / speed > soundOffDelay && anim[animName].time / speed > soundOff.clip.length && soundOff != null)
+            } else if (soundOff != null && anim[animName].time / speed > soundOffDelay && anim[animName].time / speed > soundOff.clip.length)
             {
                 // учесть задержку звука. Полезно для дверей
                 soundOff.PlayDelayed(soundOffDelay - (anim[animName].length - anim[animName].time)); 

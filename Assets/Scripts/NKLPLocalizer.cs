@@ -134,7 +134,7 @@ public class NKLPLocalizer : MonoBehaviour
         {
             if (current_locale.Keys.Contains(text.LocaleKey))
             {
-                text.TextObject.text = current_locale[text.LocaleKey];
+                text.TextObject.text = current_locale[text.LocaleKey].Replace("\\n", "\n");
             } else
             {
                 Debug.LogWarning("NKLP Localizer: Unknown key: " + text.LocaleKey);
