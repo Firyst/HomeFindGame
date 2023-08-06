@@ -19,8 +19,8 @@ public class Translator : MonoBehaviour
         {
             print("go");
             StartLevelDelayed(2000, targetLevel);
-            fadeAnim["black_screen"].time = 2f;
-            fadeAnim["black_screen"].speed = -1f;
+            fadeAnim["lore"].time = 13f;
+            fadeAnim["lore"].speed = -1f;
             fadeAnim.Play();
             started = true;
         }

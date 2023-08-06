@@ -1,7 +1,7 @@
 LevelID;1;2;3;4;5
 TitleRU;Однушка с балконом;Однокомнатная квартира;name3;name4;name5
-DescRU;Продается ахуенная квартира. 99 минут от метро Котельники, евроремонт, все работает заебись.;Продам однушку, недалеко от метро. Вода свет есть, приезжайте смотрите.;desc3;desc4;desc5
-EndingRU;Тебя избили бомжи.;Трубы протекли.;bad3;bad4;bad5
+DescRU;Продам квартиру, хорошая доступность, свежее состояние. По документам всё чисто.;Продам однушку, недалеко от метро. Вода свет есть, приезжайте смотрите.;desc3;desc4;desc5
+EndingRU;После успешной покупки и заселения тебя ждала жизнь полная кайфа, примерно неделю... Пока у тебя окончательно не сломался электрощиток. Ты вызвал электриков, а они сказали полиции про твою ферму в дальней комнате. Удачной отсидки по "народной" статье.;Ещё до начала заключения договора ты встретился с  хозяином квартиры и он спросил тебя "Тебе нравится Huey Lewis и the News?". Ты понял к чему это идёт, но спастись не успел... Тебя убил топором российский психопат.;bad3;bad4;bad5
 TitleEN;One bedroom with a balcony;Single room flat;;;
-DescEN;Best flat ever;Selling a single room, close to metro. Water and electricity available, call me;;;
-EndingEN;;;;;
+DescEN;I will sell an apartment, good accessibility, fresh condition. According to the documents, everything is clean.;Selling a single room, close to metro. Water and electricity available, call me;;;
+EndingEN;Police visited you and asked about the dark room.;Even before the contract was signed, you met with the landlord of the apartment and he asked you, "Do you like Huey Lewis and the News?". You understood what it was going to, but you didn't have time to escape... A Russian psychopath killed you with an axe.;;;
