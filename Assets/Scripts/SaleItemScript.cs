@@ -14,6 +14,7 @@ public class SaleItemScript : MonoBehaviour
     [SerializeField] private Text titleText;
     [SerializeField] private Text descText;
     [SerializeField] private Button goButton;
+    [SerializeField] private Image image;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,17 @@ public class SaleItemScript : MonoBehaviour
             titleText.text = parsedData[levelID.ToString()]["Title" + localizer.lang.ToUpper()];
             descText.text = parsedData[levelID.ToString()]["Desc" + localizer.lang.ToUpper()];
             goButton.onClick.AddListener(SendSignal);
+
+            Sprite texture = Resources.Load<Sprite>("LevelLogos/level" + levelID.ToString());
+
+            if (texture != null)
+            {
+                // Если текстура найдена, применяем её к Image
+                image.sprite = texture;
+            } else
+            {
+                Debug.LogWarning("Unable to find texture level" + levelID.ToString());
+            }
         }
     }
 

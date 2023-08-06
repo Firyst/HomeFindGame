@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
@@ -17,6 +16,7 @@ public class TabletScript : MonoBehaviour
     [SerializeField] private Text titleText;
     [SerializeField] private Text descText;
     [SerializeField] private Text endingText;
+    [SerializeField] private Image image;
 
     [SerializeField] private Animation blackScreenAnimation;
     [SerializeField] private Animation endingAnim1;
@@ -78,8 +78,19 @@ public class TabletScript : MonoBehaviour
         titleText.text = parsedData[levelID.ToString()]["Title" + PlayerPrefs.GetString("lang").ToUpper()];
         descText.text = parsedData[levelID.ToString()]["Desc" + PlayerPrefs.GetString("lang").ToUpper()];
         endingText.text = parsedData[levelID.ToString()]["Ending" + PlayerPrefs.GetString("lang").ToUpper()];
-        // localizer.FindNewText();
-        // localizer.LocalizeAllText();
+
+
+        Sprite texture = Resources.Load<Sprite>("LevelLogos/level" + levelID.ToString());
+
+        if (texture != null)
+        {
+            // Если текстура найдена, применяем её к Image
+            image.sprite = texture;
+        }
+        else
+        {
+            Debug.LogWarning("Unable to find texture level" + levelID.ToString());
+        }
     }
 
     public void EndBuy()

@@ -13,6 +13,7 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private Animation fadeAnim;
     [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioSource music;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class MenuScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         volumeSlider.onValueChanged.AddListener(changeVolume);
         volumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("volume", 0.4f));
+        music.volume = PlayerPrefs.GetFloat("volume", 0.4f) * 0.4f;
     }
 
     public void SwitchState()
@@ -31,6 +33,7 @@ public class MenuScript : MonoBehaviour
     private void changeVolume(float newVol)
     {
         PlayerPrefs.SetFloat("volume", newVol);
+        music.volume = newVol * 0.4f;
     }
 
     public void StartGame()
@@ -51,7 +54,11 @@ public class MenuScript : MonoBehaviour
 
     async public void StartLevelDelayed(int delay, string scene)
     {
-        await Task.Delay(delay);
+        for (int i = 0; i < 100; i++)
+        {
+            await Task.Delay(delay / 100);
+            music.volume = PlayerPrefs.GetFloat("volume", 0.4f) * 0.004f * (100 - i);
+        }
         SceneManager.LoadScene(scene);
     }
 }
