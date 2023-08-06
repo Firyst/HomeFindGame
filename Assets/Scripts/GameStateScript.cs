@@ -7,8 +7,6 @@ public class GameStateScript : MonoBehaviour
     [SerializeField] private Animation startAnim;
     [SerializeField] private GameObject startPos;
 
-    private bool firstStart = true;
-
     // Start is called before the first frame update
     void Start()
     {

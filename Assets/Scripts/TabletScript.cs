@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
@@ -17,6 +16,7 @@ public class TabletScript : MonoBehaviour
     [SerializeField] private Text titleText;
     [SerializeField] private Text descText;
     [SerializeField] private Text endingText;
+    [SerializeField] private Image image;
 
     [SerializeField] private Animation blackScreenAnimation;
     [SerializeField] private Animation endingAnim1;
@@ -25,13 +25,13 @@ public class TabletScript : MonoBehaviour
     [SerializeField] private GraphicRaycaster touchBlock;
     [SerializeField] private CompTry tablet;
 
+    [SerializeField] private NKLPLocalizer localizer;
+
 
 
     void Start()
     {
-        GetLocalizer().FindNewText();
-        GetLocalizer().LocalizeAllText();
-        var data = Resources.Load<TextAsset>("data"); // прочитать файл локализации
+        var data = Resources.Load<TextAsset>("data"); // прочитать файл 
 
         if (data == null)
         {
@@ -75,22 +75,22 @@ public class TabletScript : MonoBehaviour
 
     void InitUI()
     {
-        var localizer = GetLocalizer();
-        titleText.text = parsedData[levelID.ToString()]["Title" + localizer.lang.ToUpper()];
-        descText.text = parsedData[levelID.ToString()]["Desc" + localizer.lang.ToUpper()];
-        endingText.text = parsedData[levelID.ToString()]["Ending" + localizer.lang.ToUpper()];
-    }
+        titleText.text = parsedData[levelID.ToString()]["Title" + PlayerPrefs.GetString("lang").ToUpper()];
+        descText.text = parsedData[levelID.ToString()]["Desc" + PlayerPrefs.GetString("lang").ToUpper()];
+        endingText.text = parsedData[levelID.ToString()]["Ending" + PlayerPrefs.GetString("lang").ToUpper()];
 
-    private NKLPLocalizer GetLocalizer()
-    {
 
-        NKLPLocalizer res = (NKLPLocalizer)FindObjectOfType(typeof(NKLPLocalizer));
-        if (res == null)
+        Sprite texture = Resources.Load<Sprite>("LevelLogos/level" + levelID.ToString());
+
+        if (texture != null)
         {
-
-            Debug.LogError("Unable to find localizer object instance :(");
+            // Если текстура найдена, применяем её к Image
+            image.sprite = texture;
         }
-        return res;
+        else
+        {
+            Debug.LogWarning("Unable to find texture level" + levelID.ToString());
+        }
     }
 
     public void EndBuy()
