@@ -41,7 +41,7 @@ public class SaleItemScript : MonoBehaviour
     private void SendSignal()
     {
         player.MyPlaySound();
-        targetScript.UpdateTarget("level0");
+        targetScript.UpdateTarget("level"+levelID.ToString());
     }
 
     // Update is called once per frame
