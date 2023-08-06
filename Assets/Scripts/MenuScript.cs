@@ -45,6 +45,7 @@ public class MenuScript : MonoBehaviour
 
     public void QuitGame()
     {
+        print("goodbye");
         Application.Quit();
     }
 

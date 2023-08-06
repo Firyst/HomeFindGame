@@ -25,13 +25,13 @@ public class TabletScript : MonoBehaviour
     [SerializeField] private GraphicRaycaster touchBlock;
     [SerializeField] private CompTry tablet;
 
+    [SerializeField] private NKLPLocalizer localizer;
+
 
 
     void Start()
     {
-        GetLocalizer().FindNewText();
-        GetLocalizer().LocalizeAllText();
-        var data = Resources.Load<TextAsset>("data"); // прочитать файл локализации
+        var data = Resources.Load<TextAsset>("data"); // прочитать файл 
 
         if (data == null)
         {
@@ -75,22 +75,11 @@ public class TabletScript : MonoBehaviour
 
     void InitUI()
     {
-        var localizer = GetLocalizer();
-        titleText.text = parsedData[levelID.ToString()]["Title" + localizer.lang.ToUpper()];
-        descText.text = parsedData[levelID.ToString()]["Desc" + localizer.lang.ToUpper()];
-        endingText.text = parsedData[levelID.ToString()]["Ending" + localizer.lang.ToUpper()];
-    }
-
-    private NKLPLocalizer GetLocalizer()
-    {
-
-        NKLPLocalizer res = (NKLPLocalizer)FindObjectOfType(typeof(NKLPLocalizer));
-        if (res == null)
-        {
-
-            Debug.LogError("Unable to find localizer object instance :(");
-        }
-        return res;
+        titleText.text = parsedData[levelID.ToString()]["Title" + PlayerPrefs.GetString("lang").ToUpper()];
+        descText.text = parsedData[levelID.ToString()]["Desc" + PlayerPrefs.GetString("lang").ToUpper()];
+        endingText.text = parsedData[levelID.ToString()]["Ending" + PlayerPrefs.GetString("lang").ToUpper()];
+        // localizer.FindNewText();
+        // localizer.LocalizeAllText();
     }
 
     public void EndBuy()

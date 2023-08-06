@@ -35,6 +35,7 @@ public class Translator : MonoBehaviour
     async public void StartLevelDelayed(int delay, string scene)
     {
         await Task.Delay(delay);
+        Debug.Log("Switching level to " + scene);
         SceneManager.LoadScene(scene);
     }
 

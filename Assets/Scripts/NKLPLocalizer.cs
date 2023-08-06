@@ -124,6 +124,7 @@ public class NKLPLocalizer : MonoBehaviour
     }
     public void LocalizeAllText()
     {
+        print_debug("NKLP Localizer: reloading all texts.");
         // функция для полной локализации всего найденного текста
         lang = PlayerPrefs.GetString("lang");
 
@@ -134,6 +135,9 @@ public class NKLPLocalizer : MonoBehaviour
             if (current_locale.Keys.Contains(text.LocaleKey))
             {
                 text.TextObject.text = current_locale[text.LocaleKey];
+            } else
+            {
+                Debug.LogWarning("NKLP Localizer: Unknown key: " + text.LocaleKey);
             }
         }
     }
