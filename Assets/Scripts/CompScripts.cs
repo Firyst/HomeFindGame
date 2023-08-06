@@ -11,6 +11,7 @@ public class CompScripts : MonoBehaviour
     [SerializeField] GameObject parent;
     [SerializeField] GameObject salePrefab;
     [SerializeField] Translator translator;
+    [SerializeField] MySoundHandler player;
 
     public Dictionary<string, Dictionary<string, string>> parsedData = new Dictionary<string, Dictionary<string, string>>();
 
@@ -28,6 +29,7 @@ public class CompScripts : MonoBehaviour
             sale.GetComponent<SaleItemScript>().localizer = localizer;
             sale.GetComponent<SaleItemScript>().parsedData = parsedData;
             sale.GetComponent<SaleItemScript>().targetScript = translator;
+            sale.GetComponent<SaleItemScript>().player = player;
             sale.transform.localScale = Vector3.one;
             sale.transform.localPosition = new Vector3(0, 80 - 210 * index, 0);
             sale.transform.localEulerAngles = Vector3.zero;
